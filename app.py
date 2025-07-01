@@ -273,19 +273,20 @@ with st.form("prediction_form"):
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        ash = st.number_input('Ash content (%)', value=10.5, min_value=0.0, max_value=100.0, step=0.1)
-        cec = st.number_input('Cation exchange capacity (cmol(+)/kg)', value=18.6, min_value=0.0, step=0.1)
-        nbc = st.number_input('Nitrogen content (%)', value=5.1, min_value=0.0, step=0.1)
+        ash = st.number_input('Ash content (%)', value=30.96, min_value=0.0, max_value=100.0, step=0.01)
+        nbc = st.number_input('Nitrogen content (%)', value=1.15, min_value=0.0, max_value=100.0, step=0.01)
+        cec = st.number_input('Cation exchange capacity (cmol(+)/kg)', value=48.22, min_value=0.0, step=0.01)
+        
         
     with col2:
-        pbc = st.number_input('Phosphorus content (%)', value=6.3, min_value=0.0, step=0.1)
-        opbc = st.number_input('Olsen-P content (mg/kg)', value=4.8, min_value=0.0, step=0.1)
-        ssa = st.number_input('Specific surface area (m²/g)', value=112, min_value=0)
+        pbc = st.number_input('Phosphorus content (%)', value=0.52, min_value=0.0, max_value=100.0, step=0.01)
+        opbc = st.number_input('Olsen-P content (mg/kg)', value=566.11, min_value=0.0, step=0.01)
+        ssa = st.number_input('Specific surface area (m²/g)', value=72.10, min_value=0.0, step=0.01)
         
     with col3:
-        biochar_ph = st.number_input('Biochar pH', value=6.8, min_value=0.0, max_value=14.0, step=0.1)
-        carbon_content = st.number_input('Carbon content (%)', value=1.9, min_value=0.0, step=0.1)
-        biochar_ec = st.number_input('Electrical conductivity (dS/m)', value=0.32, min_value=0.0, step=0.01)
+        # biochar_ph = st.number_input('Biochar pH', value=6.8, min_value=0.0, max_value=14.0, step=0.1)
+        carbon_content = st.number_input('Carbon content (%)', value=47.23, min_value=0.0, max_value=100.0, step=0.01)
+        # biochar_ec = st.number_input('Electrical conductivity (dS/m)', value=0.32, min_value=0.0, step=0.01)
     
     # 土壤属性部分
     st.markdown('<div class="section-header">Soil Property</div>', unsafe_allow_html=True)
@@ -293,14 +294,14 @@ with st.form("prediction_form"):
     col4, col5, col6 = st.columns(3)
     
     with col4:
-        soil_ph = st.number_input('Soil pH', value=6.8, min_value=0.0, max_value=14.0, step=0.1)
-        tp = st.number_input('Total phosphorus content (g/kg)', value=1.25, min_value=0.0, step=0.01)
-        opsoil = st.number_input('Soil Olsen-P content (mg/kg)', value=0.53, min_value=0.0, step=0.01)
+        soil_ph = st.number_input('Soil pH', value=6.88, min_value=0.0, max_value=14.0, step=0.01)
+        tp = st.number_input('Total phosphorus content (g/kg)', value=0.56, min_value=0.0, step=0.01)
+        opsoil = st.number_input('Olsen-P content (mg/kg)', value=25.53, min_value=0.0, step=0.01)
         
     with col5:
-        tc = st.number_input('Total carbon content (%)', value=1.9, min_value=0.0, step=0.1)
-        oc = st.number_input('Organic carbon content (g/kg)', value=0.87, min_value=0.0, step=0.01)
-        soil_ec = st.number_input('Electrical conductivity (µS/cm)', value=320.0, min_value=0.0, step=1.0)
+        tc = st.number_input('Total carbon content (%)', value=1.28, min_value=0.0, max_value=100.0, step=0.01)
+        oc = st.number_input('Organic carbon content (g/kg)', value=12.71, min_value=0.0, step=0.01)
+        soil_ec = st.number_input('Electrical conductivity (µS/cm)', value=481.53, min_value=0.0, step=0.01)
         
     with col6:
         soil_texture_options = {
@@ -323,12 +324,12 @@ with st.form("prediction_form"):
     col7, col8, col9 = st.columns(3)
     
     with col7:
-        pyrolysis_temp = st.number_input('Biochar pyrolysis temperature (℃)', value=500, min_value=0)
-        pyrolysis_time = st.number_input('Biochar pyrolysis time (h)', value=4, min_value=0)
+        pyrolysis_temp = st.number_input('Biochar pyrolysis temperature (℃)', value=451.06, min_value=0.0,step=0.01)
+        pyrolysis_time = st.number_input('Biochar pyrolysis time (h)', value=2.14, min_value=0.0, step=0.01)
         
     with col8:
-        application_rate = st.number_input('Biochar application rate (%)', value=2, min_value=0)
-        incubation_time = st.number_input('Incubation time (d)', value=30, min_value=1)
+        application_rate = st.number_input('Biochar application rate (%)', value=2.42, min_value=0.0, max_value=100.0,step=0.01)
+        incubation_time = st.number_input('Incubation time (d)', value=63.55, min_value=0.0,step=0.01)
         
     with col9:
         fertilizer_options = {
@@ -405,7 +406,7 @@ with st.form("prediction_form"):
             'OC': oc,
             'Fertilizer type': fertilizer_options[fertilizer_type],
             'Soil texture': soil_texture_options[soil_texture],
-            'ECsoil': biochar_ec
+            'ECsoil': soil_ec
         }])
         
         try:
